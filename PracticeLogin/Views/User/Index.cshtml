@@ -1,0 +1,34 @@
+﻿@model PracticeLogin.Models.DB.Usuario
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Inicio de Sesión</div>
+                <div class="card-body">
+                    <form asp-controller="User" asp-action="Index" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            <label asp-for="Email">Email:</label>
+                            <input asp-for="Email" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Password">Contraseña:</label>
+                            <input asp-for="Password" type="password" class="form-control" />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if(ViewData["ValidateMessage"] != null){
+    <label>
+        @ViewData["ValidateMessage"]
+    </label>
+}
